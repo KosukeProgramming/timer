@@ -1,0 +1,38 @@
+* *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+}
+
+.wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#timer {
+    font-size: 20vw;
+}
+.box {
+    padding: 20px;
+}
+#min, #sec {
+    border: 1px solid #ddd;
+    font-size: 5vw;
+    color: #fff;
+    background-color: rgb(233, 117, 117);
+}
+#start, #reset {
+    border: 1px solid #ddd;
+    font-size: 5vw;
+    color: #fff;
+    background-color: rgb(98, 96, 96);
+}
