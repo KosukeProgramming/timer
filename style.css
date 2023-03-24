@@ -11,6 +11,8 @@ button {
 }
 
 .wrapper {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -23,14 +25,20 @@ button {
 }
 .box {
     padding: 20px;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
 }
 #min, #sec {
+    width: 50%;
     border: 1px solid #ddd;
-    font-size: 5vw;
+    font-size: 3vw;
     color: #fff;
     background-color: rgb(233, 117, 117);
 }
 #start, #reset {
+    padding: 0 0.2em;
+    font-weight: bold;
     border: 1px solid #ddd;
     font-size: 5vw;
     color: #fff;
