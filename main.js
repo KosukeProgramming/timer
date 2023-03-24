@@ -57,7 +57,7 @@ start.addEventListener("click", function () {
 
         countDown();
     } else {
-        isRunning === false;
+        isRunning = false;
 
         // 表記をスタートに戻す
         start.textContent = "スタート";
@@ -66,7 +66,7 @@ start.addEventListener("click", function () {
         timeToCountDown = timeLeft;
 
         // カウントを止めたいのでclearTimeoutする
-        clearTimeout(timrId);
+        clearTimeout(timerId);
     }
 });
 
