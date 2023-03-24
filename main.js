@@ -70,6 +70,23 @@ start.addEventListener("click", function () {
     }
 });
 
+// リセットボタンが押された時の処理
+reset.addEventListener('click', function() {
+    isRunning = false;
+
+    // 表記をスタートに戻す
+    start.textContent = "スタート";
+
+    // timeLeftで0にする
+    timeToCountDown = 0;
+
+    // 表示をリセットする
+    timer.textContent = '00:00';
+
+    // カウントを止めたいのでclearTimeoutする
+    clearTimeout(timerId);
+})
+
 // カウントダウンを行う関数
 function countDown() {
     timerId = setTimeout(function () {
