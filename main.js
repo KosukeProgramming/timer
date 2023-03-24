@@ -7,6 +7,8 @@ const min = document.getElementById("min");
 let timeToCountDown = 0;
 // スタートボタンを取得
 const start = document.getElementById("start");
+// リセットボタンを取得
+const reset = document.getElementById("reset");
 // 開始or終了のフラグ
 let isRunning = false;
 // スタートボタンを押した時間
@@ -29,8 +31,10 @@ function updateTimer(milliSecond) {
 // 秒ボタンが押されたら設定時間に加算
 sec.addEventListener("click", function () {
     // 1秒は1000msなので1000を加算
-
     timeToCountDown += 1000;
+
+    changeButtonState('active');
+
     // 画面に表示する
     updateTimer(timeToCountDown);
 });
@@ -38,8 +42,9 @@ sec.addEventListener("click", function () {
 // 分ボタンが押されたら設定時間に加算
 min.addEventListener("click", function () {
     // 1分は60000msなので1000を加算
-
     timeToCountDown += 60000;
+
+    changeButtonState('active');
 
     // 画面に表示する
     updateTimer(timeToCountDown);
@@ -71,7 +76,7 @@ start.addEventListener("click", function () {
 });
 
 // リセットボタンが押された時の処理
-reset.addEventListener('click', function() {
+reset.addEventListener("click", function () {
     isRunning = false;
 
     // 表記をスタートに戻す
@@ -80,12 +85,14 @@ reset.addEventListener('click', function() {
     // timeLeftで0にする
     timeToCountDown = 0;
 
+    changeButtonState('disabled');
+
     // 表示をリセットする
-    timer.textContent = '00:00';
+    timer.textContent = "00:00";
 
     // カウントを止めたいのでclearTimeoutする
     clearTimeout(timerId);
-})
+});
 
 // カウントダウンを行う関数
 function countDown() {
@@ -100,6 +107,8 @@ function countDown() {
             clearTimeout(timerId);
             timeLeft = 0;
 
+            changeButtonState('disabled');
+
             // 設定時間の初期化
             timeToCountDown = 0;
 
@@ -113,4 +122,19 @@ function countDown() {
         updateTimer(timeLeft);
         countDown();
     }, 10);
+}
+
+function changeButtonState(state) {
+
+    // ボタンを使えない状態にする
+    if (state === 'disabled') {
+        start.setAttribute("disabled", true);
+        reset.setAttribute("disabled", true);
+    }
+
+    // ボタンを使える状態にする
+    if (state === 'active') {
+        start.removeAttribute("disabled");
+        reset.removeAttribute("disabled");
+    }
 }

@@ -44,3 +44,6 @@ button {
     color: #fff;
     background-color: rgb(98, 96, 96);
 }
+#start:disabled, #reset:disabled {
+    opacity: 0.2;
+}
